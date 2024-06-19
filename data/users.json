@@ -1,0 +1,25 @@
+[
+  {
+    "firstName": "Jessica",
+    "lastName": "Rosier",
+    "email": "jessicagchristine@gmail.com",
+    "DOB": "1991-08-16",
+  },
+  {
+    "firstName": "Jordan",
+    "lastName": "Rosier",
+    "email": "jordanrosier1@gmail.com",
+    "DOB": "1996-09-25"
+  },
+  {"firstName": "Jocko",
+    "lastName": "Willink",
+    "email": "jocko.willink@echelon-front.com",
+    "DOB": "1971-09-08"
+  },
+  {
+    "firstName": "Roman",
+    "lastName": "Gonzalez",
+    "email": "thunderRoarus1@yahoo.com",
+    "DOB": "2018-04-06"
+  }
+]
