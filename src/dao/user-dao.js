@@ -1,5 +1,6 @@
-
-const User = require("../models/user.js")
+const User = require("../models/user.js");
+const redisClient = require("../config/Redis_Functions");
+const {json} = require("express");
 
 
 async function getAllUsers() {
@@ -7,25 +8,25 @@ async function getAllUsers() {
     const response = await fetch(endpoint);
     const data = await response.json();
     let users = [];
-    data.forEach(user => {
-        let { name, username, email, address, phone, website, company } = user;
+    data.forEach((user) => {
+        let {name, username, email, address, phone, website, company} = user;
         users.push(user);
     });
     return users;
 }
 
-async function editUser(user) {
-    const endpoint = "https://jsonplaceholder.typicode.com/users";
-    const response = await fetch(endpoint, {
-        method: 'PUT',
-        body: JSON.stringify(user),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
+
+function createUser(user) {
+    //save user to redis db
+    redisClient.connect().then(() => {
+        redisClient.setHashKey("user" + ":" + user.getDodid(), "data", user), (err, reply) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log(reply);
+        };
     });
-    const data = await response.json();
-    return data;
+    return user;
 }
 
-module.exports = { getAllUsers };
-
+module.exports = {getAllUsers, createUser};

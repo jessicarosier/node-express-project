@@ -1,6 +1,6 @@
 const logger = require('../utils/logger');
 const Redis = require('ioredis');
-const _RedisClient = require('../config/Redis_DB_config');
+const _RedisClient = require('../config/Redis_Functions');
 
 class _Redis {
     constructor() {

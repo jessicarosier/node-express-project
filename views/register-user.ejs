@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="/js/form-functions.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <form id="register-form" action="/register" method="POST">
+      <input
+        type="text"
+        name="dodid"
+        placeholder="DODID"
+        pattern="[0-9]+"
+        required
+      />
+      <input
+        type="text"
+        name="firstName"
+        placeholder="First Name"
+        pattern="[a-zA-Z]+"
+        required
+      />
+      <input
+        type="text"
+        name="lastName"
+        placeholder="Last Name"
+        pattern="[a-zA-Z]+"
+        required
+      />
+      <input type="email" name="email" placeholder="Email" required />
+      <input
+        type="text"
+        name="phone"
+        placeholder="Phone"
+        pattern="[0-9]+"
+        required
+      />
+      <select name="branch" required>
+        <option value="" disabled selected>Select your branch</option>
+        <option value="Air Force">Air Force</option>
+        <option value="Army">Army</option>
+        <option value="Navy">Navy</option>
+        <option value="Marines">Marines</option>
+        <option value="Space Force">Space Force</option>
+      </select>
+
+      <button type="button" onclick="submitForm(this.form.id)">Submit</button>
+    </form>
+  </body>
+</html>
