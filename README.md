@@ -13,3 +13,28 @@ I will also be using this project to learn how incorporate other technologies in
 6. Run `npm install -g nodemon` to install nodemon globally
 7. Run `nodemon app.js` to start the server
 8. Visit `http://localhost:8080` in your browser
+
+
+## Project Structure
+The project structure is as follows:
+```
+.
+├── app.js                 # Entry point for the application
+├── package.json           # Contains metadata and dependencies
+└── public/                # Static assets (css, js, images)
+    ├── css/               # CSS files
+    ├── images/            # Image files
+    └── js/                # Frontend JavaScript files
+└── src/
+    ├── config/            # Configuration files
+    ├── dao/               # Data access objects - database queries
+    ├── logic/             # Complex logic between routes and data access
+    ├── models/            # Data models representing database objects
+    ├── python/            # Python scripts interacting with Node environment
+    ├── routes/            # Application endpoints
+    ├── utils/             # Utility functions used throughout the app
+    └── views/             # EJS templates for the application
+```
+
+
+
