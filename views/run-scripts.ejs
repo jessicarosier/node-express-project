@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+
+<form id="pdf-form">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input class="form-control" id="title" name="title" type="text" placeholder="Title">
+    </div>
+    <div class="form-group">
+        <label for="content">Content</label>
+<textarea class="form-control" id="content" name="content" placeholder="Content"></textarea>
+    </div>
+<button type="button" class="btn btn-primary" id="generate-pdf-btn">Generate PDF</button>
+</form>
+
+
+<script type="module" src="/js/run-scripts.js"></script>
+<script src="/js/form-functions.js"></script>
+</body>
+</html>

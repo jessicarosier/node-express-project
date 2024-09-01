@@ -1,18 +1,30 @@
 const logger = require('../utils/logger');
+const { spawn } = require('child_process');
 
 class HelperFunctions {
 
-   /***
-    * Function that returns the index of an object in an array of objects
-    * @param {Array} objArr - Array of objects
-    * @param {String} key - Key to search for
-    * @param {String} value - Value to search for
-    * @returns {Number} - Index of the object in the array
-    */
+    static async executePythonScript(scriptPath, args) {
+        const python = spawn('python3', [scriptPath, ...args]);
+        let output;
 
-    _getIndex(objArr, key, value) {
-        return objArr.findIndex((obj) => obj[key] === value);
+        python.stdout.on('data', (data) => {
+            output = data.toString();
+            logger.info(`stdout: ${data}`);
+        });
+
+        python.stderr.on('data', (data) => {
+            output = data.toString();
+            logger.error(`stderr: ${data}`);
+        });
+
+        python.on('close', (code) => {
+            logger.info(`child process exited with code ${code}`);
+        });
+
+        return output;
     }
 
 }
+
+module.exports = HelperFunctions;
 

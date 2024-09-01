@@ -1,3 +1,5 @@
+import {getDataFromAPI, postDataToAPI} from "./crud-functions.js";
+
 function humanReadableBytes(sizeBytes) {
     const UNITS = ["B", "KB", "MB", "GB", "TB", "PB"];
     let size = Math.abs(Number(sizeBytes));
@@ -25,12 +27,6 @@ function buildTableRowsFromObject(obj) {
 }
 
 
-const fetchData = async (endpoint) => {
-    let response = await fetch(endpoint);
-    let data = await response.json();
-    return data;
-};
-
 function buildStatsObject(array) {
     return array.reduce((accumulator, currentObject) => {
         Object.keys(currentObject).forEach(key => {
@@ -49,7 +45,7 @@ async function getStats() {
     const url = `${endpoint}/${encodeURIComponent(document.getElementById("start-date").value)}/${encodeURIComponent(document.getElementById("end-date").value)}`;
 
     try {
-        const data = await fetchData(url);
+        const data = await getDataFromAPI(url);
         let statsObj = buildStatsObject(data.result);
 
         const keysToConvert = ["totalDownloadSize", "totalUploadSize"];
@@ -66,3 +62,22 @@ async function getStats() {
         tableBody.innerHTML = "<tr><td>Unable to fetch data</td></tr>";
     }
 }
+
+async function createPdf(data) {
+    const endpoint = "/api/v1/pdf";
+    try {
+        const response = await postDataToAPI(endpoint, data);
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+document.getElementById("generate-pdf-btn").addEventListener("click", async () => {
+    let formData = new FormData(document.getElementById("pdf-form"));
+
+   let data = Object.fromEntries(formData.entries());
+    console.log(data);
+
+    await createPdf(data);
+});
