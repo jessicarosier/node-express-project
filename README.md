@@ -4,6 +4,15 @@
 This is a simple Node.js project using Express.js framework. This is a simple project to help me understand the MVC structure in Node.js.
 I will also be using this project to learn how incorporate other technologies into a Node.js project such as Redis, Python, AWS S3, and more.
 
+## Prerequisites
+To run this project, you will need the following installed on your machine:
+1. Node.js
+2. npm
+3. Python
+4. pip
+5. Redis
+
+
 ## Installation
 1. Clone the repository
 2. Run `npm install`
