@@ -1,0 +1,4 @@
+reportlab~=4.2.2
+pillow~=10.4.0
+pip~=24.2
+chardet~=5.2.0
