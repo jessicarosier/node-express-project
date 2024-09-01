@@ -1,7 +1,8 @@
 # node-express-project
 
 ## Description
-This is a simple Node.js project using Express.js framework. This is a simple project to help me understand how to use Node.js and Express.js. I will be using this project to learn how incorporate other technologies such as Redis, Python Scripting, and more.
+This is a simple Node.js project using Express.js framework. This is a simple project to help me understand the MVC structure in Node.js.
+I will also be using this project to learn how incorporate other technologies into a Node.js project such as Redis, Python, AWS S3, and more.
 
 ## Installation
 1. Clone the repository
