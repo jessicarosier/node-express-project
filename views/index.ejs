@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <div id="user-wrapper">
-      <ul>
-        <% users.forEach((user) => { %>
-        <li>
-          <div>
-            <h3><%= user.name %></h3>
-            <p><%= user.email %></p>
-            <a href="<%= user.website%>" target="_blank"><%= user.website%></a>
-          </div>
-        </li>
-        <% }) %>
-      </ul>
-
-      <a href="/register" target="_blank">Register</a>
+    <%- include('./partials/head') %>
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="container mt-5">
+        <h2>Welcome to the world of Node.js</h2>
+        <p>This is a simple Node.js application that uses the Express framework.</p>
+        <p>Use the links below to check out some things I'm working on:</p>
+        <div>
+            <ul class="list-unstyled d-flex flex-column gap-3">
+                <li class="nav-item"><a class="btn btn-outline-primary" href="/pdf">Generate a PDF using Python!</a></li>
+                <li class="nav-item"><a class="btn btn-outline-primary" href="/register">An example registration form!</a></li>
+            </ul>
+        </nav>
     </div>
-  </body>
+</div>
+</body>
 </html>

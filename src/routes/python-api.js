@@ -40,7 +40,6 @@ pythonRouter.get("/api/v1/download/:filePath(*)", async (req, res, next) => {
                 next(error);
             } else {
                 console.log("File downloaded successfully");
-                res.json({ success: true });
             }
         });
     } catch (error) {
