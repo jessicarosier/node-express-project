@@ -44,3 +44,17 @@ function submitForm(formId) {
     throw error;
   }
 }
+
+function validateForm(formId) {
+  let form = document.querySelector(`#${formId}`);
+  if (form.checkValidity()) {
+    console.log("valid");
+    return true;
+  } else {
+    console.log("invalid");
+    form.reportValidity();
+    return false;
+  }
+}
+
+export { submitForm, validateForm };

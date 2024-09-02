@@ -1,6 +1,7 @@
 import os
 import sys
 
+from datetime import datetime
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet
@@ -8,12 +9,13 @@ from reportlab.lib.utils import ImageReader
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle, Image
 
 desktop_path = os.path.expanduser("~/Desktop/")
+mem_path = "docs/"
+
 file_name = sys.argv[1]
 file_content = sys.argv[2]
 
-print(f"Creating PDF with filename {file_name}...")
-
-pdf_path = desktop_path + file_name + ".pdf"
+# Define the path to save the PDF
+pdf_path = mem_path + file_name + ".pdf"
 doc = SimpleDocTemplate(pdf_path, pagesize=letter, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=72)
 
 styles = getSampleStyleSheet()
@@ -25,13 +27,22 @@ story = []
 title = Paragraph(file_name, styles['Title'])
 story.append(title)
 
+# get the current time
+now = datetime.now()
+current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+# Add footer with timestamp
+footer = Paragraph("Generated on: " + current_time, styles['Normal'])
+story.append(footer)
+
 # Add content
 content = Paragraph(file_content, styles['Normal'])
 story.append(content)
 
 
 # Generate an array of data for the table
-table_data = [['FIRST NAME', 'LAST NAME', 'EMAIL', 'PHONE'],
+table_headers = ['FIRST NAME', 'LAST NAME', 'EMAIL', 'PHONE']
+# Get the data from the database
+table_data = [table_headers,
               ['Jessica', 'Rosier', 'jessica1@gmail.com', '714-341-951'],
               ['John', 'Doe', 'johndoe@yahoo.com', '210-342-1234'],
               ['Jane', 'Smith', 'jsmith@gmail.com', '757-342-1234']]
@@ -78,6 +89,7 @@ story.append(image)
 # Build the document
 doc.build(story)
 
-print(f"PDF with filename {file_name} created successfully")
 
-sys.stdout.flush()
+# Send the file path to the frontend
+print(pdf_path)
+
